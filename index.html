@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>TCPJoker &mdash; TCP Joker 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="TCP Joker 0.1.0 documentation" href="#" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tcpjoker">
+<h1>TCPJoker<a class="headerlink" href="#tcpjoker" title="Permalink to this headline">¶</a></h1>
+<p>A module based Telegram Bot using webhooks.</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Extensible via modules</li>
+<li>User privileges system, also controllable via <cite>user</cite> module</li>
+<li><cite>printer</cite> module for &#8220;static&#8221; commands</li>
+<li>Human-readable config &amp; logs</li>
+<li>Immense awesomeness under MIT license</li>
+</ul>
+</div>
+<div class="section" id="modules-how-to">
+<h2>Modules how-to<a class="headerlink" href="#modules-how-to" title="Permalink to this headline">¶</a></h2>
+<p>Module is a python file in <cite>modules/</cite> directory having a <cite>run()</cite> function accepting <a class="reference external" href="https://core.telegram.org/bots/api#message">Telegram message object</a> and returning <cite>str</cite>.</p>
+</div>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">&gt; Why TCPJoker?</p>
+<p>The bot was historically written to send jokes about network protocols. What&#8217;s the worst thing about TCP jokes? I&#8217;ll keep telling it slower and slower until you get it!</p>
+<p class="rubric">&gt; I&#8217;ve written an awesome module.</p>
+<p>Pull Requests are welcome.</p>
+<p class="rubric">&gt; I had an issue installing/using/configuring your bot.</p>
+<p>Issues and bug reports are welcome as well.</p>
+<p class="rubric">&gt; Why MIT?</p>
+<p>Here Emmanuel will someday answer, why MIT</p>
+<p class="rubric">&gt; Why webhooks?</p>
+<p>Here Emmanuel will someday answer, why webhooks</p>
+</div>
+<p>Here Emmanuel will someday answer, why webhooks</p>
+</div>
+<div class="section" id="module-modules">
+<span id="modules-documentation"></span><h1>Modules documentation<a class="headerlink" href="#module-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gitversion">
+<h2>gitversion<a class="headerlink" href="#gitversion" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.gitversion"></span></div></blockquote>
+</div>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.id"></span></div></blockquote>
+</div>
+<div class="section" id="joke">
+<h2>joke<a class="headerlink" href="#joke" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.joke"></span><dl class="data">
+<dt id="modules.joke.CFG_PATH">
+<code class="descclassname">modules.joke.</code><code class="descname">CFG_PATH</code><em class="property"> = 'modules/joke.json'</em><a class="headerlink" href="#modules.joke.CFG_PATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path to configuration file</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="modules.joke.CONFIG">
+<code class="descclassname">modules.joke.</code><code class="descname">CONFIG</code><em class="property"> = None</em><a class="headerlink" href="#modules.joke.CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Global variable to store module configuration</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="modules.joke.DEFAULT_CONFIG">
+<code class="descclassname">modules.joke.</code><code class="descname">DEFAULT_CONFIG</code><em class="property"> = {'jokes': [&quot;What's the best thing about having sex with twenty seven year olds?\nThere are twenty of them!&quot;], 'hivemind': False}</em><a class="headerlink" href="#modules.joke.DEFAULT_CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default module configuration</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.load_config">
+<code class="descclassname">modules.joke.</code><code class="descname">load_config</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#load_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.load_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads config to <a class="reference internal" href="#modules.joke.CONFIG" title="modules.joke.CONFIG"><code class="xref py py-const docutils literal"><span class="pre">CONFIG</span></code></a> from <cite>CFG_PATH</cite> or <cite>path</cite> if provided</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>string</em>) &#8211; path to the configuration file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.s_add">
+<code class="descclassname">modules.joke.</code><code class="descname">s_add</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds joke to joke pool if hivemind mode is on or joke sender is admin</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.s_baneks">
+<code class="descclassname">modules.joke.</code><code class="descname">s_baneks</code><span class="sig-paren">(</span><em>*_</em>, <em>*</em>, <em>recurse=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_baneks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_baneks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns random joke from <a class="reference external" href="https://vk.com/baneks">&#8216;B&#8217; category</a>. Runs recursively until a joke with non-empty text is found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>recurse</strong> (<em>Optional[int]</em>) &#8211; Depth of recursion. Defaults to 1.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">random joke from <a class="reference external" href="https://vk.com/baneks">&#8216;B&#8217; category</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.s_delete">
+<code class="descclassname">modules.joke.</code><code class="descname">s_delete</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes joke from pool by number if sender is admin</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.s_hivemind">
+<code class="descclassname">modules.joke.</code><code class="descname">s_hivemind</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_hivemind"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_hivemind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls <cite>hivemind</cite> option state</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.s_index">
+<code class="descclassname">modules.joke.</code><code class="descname">s_index</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns joke from pool by number</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.s_search">
+<code class="descclassname">modules.joke.</code><code class="descname">s_search</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Searches joke pool case-insensitively.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">seqrch results in human-readable format</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="modules.joke.write_config">
+<code class="descclassname">modules.joke.</code><code class="descname">write_config</code><span class="sig-paren">(</span><em>data=None</em>, <em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#write_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.write_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes <a class="reference internal" href="#modules.joke.CONFIG" title="modules.joke.CONFIG"><code class="xref py py-const docutils literal"><span class="pre">CONFIG</span></code></a> or <cite>CONFIG</cite> (if provided) to <cite>CFG_PATH</cite> or <cite>path</cite> (if provided)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> &#8211; configuration data to serialize</li>
+<li><strong>path</strong> (<em>string</em>) &#8211; path to the configuration file</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div></blockquote>
+</div>
+<div class="section" id="printer">
+<h2>printer<a class="headerlink" href="#printer" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.printer"></span></div></blockquote>
+</div>
+<div class="section" id="time">
+<h2>time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.time"></span></div></blockquote>
+</div>
+<div class="section" id="user">
+<h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.user"></span></div></blockquote>
+</div>
+<div class="section" id="roll">
+<h2>roll<a class="headerlink" href="#roll" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.roll"></span></div></blockquote>
+</div>
+</div>
+<div class="section" id="module-extensions">
+<span id="extensions-documentation"></span><h1>Extensions documentation<a class="headerlink" href="#module-extensions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="users">
+<h2>users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-extensions.users"></span><dl class="function">
+<dt id="extensions.users.add_user_to_group">
+<code class="descclassname">extensions.users.</code><code class="descname">add_user_to_group</code><span class="sig-paren">(</span><em>user_id</em>, <em>group</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#add_user_to_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.add_user_to_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add user to specified group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to add to group</li>
+<li><strong>group</strong> (<em>str</em>) &#8211; The name of group</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.delete_user_from_group">
+<code class="descclassname">extensions.users.</code><code class="descname">delete_user_from_group</code><span class="sig-paren">(</span><em>user_id</em>, <em>group</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#delete_user_from_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.delete_user_from_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete user from specified group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to delete from group</li>
+<li><strong>group</strong> (<em>str</em>) &#8211; The name of group</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.is_user_admin">
+<code class="descclassname">extensions.users.</code><code class="descname">is_user_admin</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#is_user_admin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.is_user_admin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if user admin or not</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Check result</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.is_user_in_group">
+<code class="descclassname">extensions.users.</code><code class="descname">is_user_in_group</code><span class="sig-paren">(</span><em>user_id</em>, <em>group</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#is_user_in_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.is_user_in_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether user in group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to check</li>
+<li><strong>group</strong> (<em>str</em>) &#8211; Name of group</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Check result</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.is_user_registered">
+<code class="descclassname">extensions.users.</code><code class="descname">is_user_registered</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#is_user_registered"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.is_user_registered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if user registered in system</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Check result</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.list_groups">
+<code class="descclassname">extensions.users.</code><code class="descname">list_groups</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#list_groups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.list_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>List groups user members in</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to check</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of groups</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.register_user">
+<code class="descclassname">extensions.users.</code><code class="descname">register_user</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#register_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.register_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers user with id <cite>user_id</cite> in system. By default, <cite>admin</cite> is False and there are no groups</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to register</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.save_to_file">
+<code class="descclassname">extensions.users.</code><code class="descname">save_to_file</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#save_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.save_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves python data to JSON file named <code class="xref py py-const docutils literal"><span class="pre">DATA_FILE_NAME</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>dict</em>) &#8211; Python dict to save</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="extensions.users.set_user_admin">
+<code class="descclassname">extensions.users.</code><code class="descname">set_user_admin</code><span class="sig-paren">(</span><em>user_id</em>, <em>admin_flag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extensions/users.html#set_user_admin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#extensions.users.set_user_admin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets user admin status</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>user_id</strong> (<em>int</em>) &#8211; Telegram id of user to change</li>
+<li><strong>admin_flag</strong> (<em>bool</em>) &#8211; New state of admin flag</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">TCPJoker</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#modules-how-to">Modules how-to</a></li>
+<li><a class="reference internal" href="#faq">FAQ</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-modules">Modules documentation</a><ul>
+<li><a class="reference internal" href="#gitversion">gitversion</a></li>
+<li><a class="reference internal" href="#id">id</a></li>
+<li><a class="reference internal" href="#joke">joke</a></li>
+<li><a class="reference internal" href="#printer">printer</a></li>
+<li><a class="reference internal" href="#time">time</a></li>
+<li><a class="reference internal" href="#user">user</a></li>
+<li><a class="reference internal" href="#roll">roll</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-extensions">Extensions documentation</a><ul>
+<li><a class="reference internal" href="#users">users</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Quentin, Emmanuel Goldstein.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

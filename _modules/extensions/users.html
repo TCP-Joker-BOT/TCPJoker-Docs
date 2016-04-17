@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>extensions.users &mdash; TCP Joker 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="TCP Joker 0.1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for extensions.users</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logger</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+
+<span class="n">DATA_FILE_NAME</span> <span class="o">=</span> <span class="s1">&#39;users.json&#39;</span>
+
+
+<div class="viewcode-block" id="save_to_file"><a class="viewcode-back" href="../../index.html#extensions.users.save_to_file">[docs]</a><span class="k">def</span> <span class="nf">save_to_file</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Saves python data to JSON file named :py:const:`DATA_FILE_NAME`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (dict): Python dict to save</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">DATA_FILE_NAME</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="is_user_registered"><a class="viewcode-back" href="../../index.html#extensions.users.is_user_registered">[docs]</a><span class="k">def</span> <span class="nf">is_user_registered</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks if user registered in system</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to check</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Check result</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="register_user"><a class="viewcode-back" href="../../index.html#extensions.users.register_user">[docs]</a><span class="k">def</span> <span class="nf">register_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Registers user with id `user_id` in system. By default, `admin` is False and there are no groups</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to register</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;admin&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">[]}</span></div>
+
+
+<div class="viewcode-block" id="is_user_admin"><a class="viewcode-back" href="../../index.html#extensions.users.is_user_admin">[docs]</a><span class="k">def</span> <span class="nf">is_user_admin</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks if user admin or not</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Check result</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)][</span><span class="s1">&#39;admin&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="set_user_admin"><a class="viewcode-back" href="../../index.html#extensions.users.set_user_admin">[docs]</a><span class="k">def</span> <span class="nf">set_user_admin</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">admin_flag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sets user admin status</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to change</span>
+<span class="sd">        admin_flag (bool): New state of admin flag</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">register_user</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
+    <span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)][</span><span class="s1">&#39;admin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">admin_flag</span>
+    <span class="n">save_to_file</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="is_user_in_group"><a class="viewcode-back" href="../../index.html#extensions.users.is_user_in_group">[docs]</a><span class="k">def</span> <span class="nf">is_user_in_group</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks whether user in group</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to check</span>
+<span class="sd">        group (str): Name of group</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Check result</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)][</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="list_groups"><a class="viewcode-back" href="../../index.html#extensions.users.list_groups">[docs]</a><span class="k">def</span> <span class="nf">list_groups</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;List groups user members in</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to check</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of groups</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)][</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="add_user_to_group"><a class="viewcode-back" href="../../index.html#extensions.users.add_user_to_group">[docs]</a><span class="k">def</span> <span class="nf">add_user_to_group</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add user to specified group</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to add to group</span>
+<span class="sd">        group (str): The name of group</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">register_user</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">is_user_in_group</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">),</span> <span class="n">group</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)][</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+    <span class="n">save_to_file</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="delete_user_from_group"><a class="viewcode-back" href="../../index.html#extensions.users.delete_user_from_group">[docs]</a><span class="k">def</span> <span class="nf">delete_user_from_group</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">group</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Delete user from specified group</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        user_id (int): Telegram id of user to delete from group</span>
+<span class="sd">        group (str): The name of group</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">data</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_user_in_group</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">),</span> <span class="n">group</span><span class="p">):</span>
+        <span class="k">return</span>
+    <span class="n">data</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">user_id</span><span class="p">)][</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+    <span class="n">save_to_file</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">DATA_FILE_NAME</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="s1">&#39;admin&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">u</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="s1">&#39;admin&#39;</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">bool</span> <span class="ow">or</span> <span class="s1">&#39;groups&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">u</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="s1">&#39;groups&#39;</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span>
+<span class="k">except</span> <span class="n">FileNotFoundError</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;File with users not found and will be created&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Invalid users file, creating new&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Some error occured with users file, creating new&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Quentin, Emmanuel Goldstein.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
