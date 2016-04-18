@@ -70,202 +70,6 @@
 </div>
 <p>Here Emmanuel will someday answer, why webhooks</p>
 </div>
-<div class="section" id="module-modules">
-<span id="modules-documentation"></span><h1>Modules documentation<a class="headerlink" href="#module-modules" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="gitversion">
-<h2>gitversion<a class="headerlink" href="#gitversion" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><span class="target" id="module-modules.gitversion"></span></div></blockquote>
-</div>
-<div class="section" id="id">
-<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><span class="target" id="module-modules.id"></span></div></blockquote>
-</div>
-<div class="section" id="joke">
-<h2>joke<a class="headerlink" href="#joke" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><span class="target" id="module-modules.joke"></span><dl class="data">
-<dt id="modules.joke.CFG_PATH">
-<code class="descclassname">modules.joke.</code><code class="descname">CFG_PATH</code><em class="property"> = 'modules/joke.json'</em><a class="headerlink" href="#modules.joke.CFG_PATH" title="Permalink to this definition">¶</a></dt>
-<dd><p>Path to configuration file</p>
-</dd></dl>
-
-<dl class="data">
-<dt id="modules.joke.CONFIG">
-<code class="descclassname">modules.joke.</code><code class="descname">CONFIG</code><em class="property"> = None</em><a class="headerlink" href="#modules.joke.CONFIG" title="Permalink to this definition">¶</a></dt>
-<dd><p>Global variable to store module configuration</p>
-</dd></dl>
-
-<dl class="data">
-<dt id="modules.joke.DEFAULT_CONFIG">
-<code class="descclassname">modules.joke.</code><code class="descname">DEFAULT_CONFIG</code><em class="property"> = {'jokes': [&quot;What's the best thing about having sex with twenty seven year olds?\nThere are twenty of them!&quot;], 'hivemind': False}</em><a class="headerlink" href="#modules.joke.DEFAULT_CONFIG" title="Permalink to this definition">¶</a></dt>
-<dd><p>Default module configuration</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.load_config">
-<code class="descclassname">modules.joke.</code><code class="descname">load_config</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#load_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.load_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads config to <a class="reference internal" href="#modules.joke.CONFIG" title="modules.joke.CONFIG"><code class="xref py py-const docutils literal"><span class="pre">CONFIG</span></code></a> from <cite>CFG_PATH</cite> or <cite>path</cite> if provided</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>string</em>) &#8211; path to the configuration file</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.s_add">
-<code class="descclassname">modules.joke.</code><code class="descname">s_add</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds joke to joke pool if hivemind mode is on or joke sender is admin</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.s_baneks">
-<code class="descclassname">modules.joke.</code><code class="descname">s_baneks</code><span class="sig-paren">(</span><em>*_</em>, <em>*</em>, <em>recurse=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_baneks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_baneks" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns random joke from <a class="reference external" href="https://vk.com/baneks">&#8216;B&#8217; category</a>. Runs recursively until a joke with non-empty text is found.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>recurse</strong> (<em>Optional[int]</em>) &#8211; Depth of recursion. Defaults to 1.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">random joke from <a class="reference external" href="https://vk.com/baneks">&#8216;B&#8217; category</a></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.s_delete">
-<code class="descclassname">modules.joke.</code><code class="descname">s_delete</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_delete" title="Permalink to this definition">¶</a></dt>
-<dd><p>Deletes joke from pool by number if sender is admin</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.s_hivemind">
-<code class="descclassname">modules.joke.</code><code class="descname">s_hivemind</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_hivemind"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_hivemind" title="Permalink to this definition">¶</a></dt>
-<dd><p>Controls <cite>hivemind</cite> option state</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.s_index">
-<code class="descclassname">modules.joke.</code><code class="descname">s_index</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns joke from pool by number</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">result in human-readable format</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.s_search">
-<code class="descclassname">modules.joke.</code><code class="descname">s_search</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#s_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.s_search" title="Permalink to this definition">¶</a></dt>
-<dd><p>Searches joke pool case-insensitively.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; Telegram message object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">seqrch results in human-readable format</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="modules.joke.write_config">
-<code class="descclassname">modules.joke.</code><code class="descname">write_config</code><span class="sig-paren">(</span><em>data=None</em>, <em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/modules/joke.html#write_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#modules.joke.write_config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes <a class="reference internal" href="#modules.joke.CONFIG" title="modules.joke.CONFIG"><code class="xref py py-const docutils literal"><span class="pre">CONFIG</span></code></a> or <cite>CONFIG</cite> (if provided) to <cite>CFG_PATH</cite> or <cite>path</cite> (if provided)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>data</strong> &#8211; configuration data to serialize</li>
-<li><strong>path</strong> (<em>string</em>) &#8211; path to the configuration file</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div></blockquote>
-</div>
-<div class="section" id="printer">
-<h2>printer<a class="headerlink" href="#printer" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><span class="target" id="module-modules.printer"></span></div></blockquote>
-</div>
-<div class="section" id="time">
-<h2>time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><span class="target" id="module-modules.time"></span></div></blockquote>
-</div>
-<div class="section" id="user">
-<h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><span class="target" id="module-modules.user"></span></div></blockquote>
-</div>
-<div class="section" id="roll">
-<h2>roll<a class="headerlink" href="#roll" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><span class="target" id="module-modules.roll"></span></div></blockquote>
-</div>
-</div>
 <div class="section" id="module-extensions">
 <span id="extensions-documentation"></span><h1>Extensions documentation<a class="headerlink" href="#module-extensions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="users">
@@ -434,6 +238,95 @@
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="module-modules">
+<span id="modules-documentation"></span><h1>Modules documentation<a class="headerlink" href="#module-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gitversion">
+<h2>gitversion<a class="headerlink" href="#gitversion" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.gitversion"></span></div></blockquote>
+</div>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.id"></span><div class="section" id="summary">
+<h3>Summary:<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>Check your id. To check id of another user, attach a reply to his message.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="joke">
+<h2>joke<a class="headerlink" href="#joke" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.joke"></span><div class="section" id="id1">
+<h3>Summary:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Provides user-editable pool of jokes as well as random jokes from <a class="reference external" href="https://vk.com/baneks">B category</a>.
+Jokes pool is by default editable by members of <cite>joke</cite> group and bot admins.
+Alternatively, there&#8217;s <cite>hivemind mode</cite>, which allows any user to add jokes to pool.
+To remove jokes from pool, user still needs to be module or bot admin.</p>
+</div>
+<div class="section" id="sub-commands">
+<h3>Sub-commands:<a class="headerlink" href="#sub-commands" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>search [query]</li>
+</ul>
+<p>Search for query in jokes pool. When called without arguments, returns the whole joke pool.</p>
+<ul class="simple">
+<li>i &lt;num&gt;</li>
+</ul>
+<p>Return joke number &lt;num&gt;.</p>
+<ul class="simple">
+<li>add &lt;joke&gt;</li>
+</ul>
+<p>Add &lt;joke&gt; to pool if sender is admin or hivemind mode is enabled.</p>
+<ul class="simple">
+<li>delete &lt;num&gt;</li>
+</ul>
+<p>Delete joke number &lt;num&gt; from pool if sender is admin.</p>
+<ul class="simple">
+<li>baneks</li>
+</ul>
+<p>Return random joke from <a class="reference external" href="https://vk.com/baneks">B category</a></p>
+<ul class="simple">
+<li>hivemind {on|off}</li>
+</ul>
+<p>Toggle hivemind mode.</p>
+<ul class="simple">
+<li>When called without arguments, return random joke from pool.</li>
+</ul>
+</div></blockquote>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="printer">
+<h2>printer<a class="headerlink" href="#printer" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.printer"></span></div></blockquote>
+</div>
+<div class="section" id="time">
+<h2>time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.time"></span><div class="section" id="id3">
+<h3>Summary:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Returns current time.</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="user">
+<h2>user<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.user"></span></div></blockquote>
+</div>
+<div class="section" id="roll">
+<h2>roll<a class="headerlink" href="#roll" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><span class="target" id="module-modules.roll"></span><div class="section" id="id4">
+<h3>Summary:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Hard choice? Roll a dice!</p>
+</div>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
@@ -457,6 +350,10 @@
 <li><a class="reference internal" href="#faq">FAQ</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#module-extensions">Extensions documentation</a><ul>
+<li><a class="reference internal" href="#users">users</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-modules">Modules documentation</a><ul>
 <li><a class="reference internal" href="#gitversion">gitversion</a></li>
 <li><a class="reference internal" href="#id">id</a></li>
@@ -465,10 +362,6 @@
 <li><a class="reference internal" href="#time">time</a></li>
 <li><a class="reference internal" href="#user">user</a></li>
 <li><a class="reference internal" href="#roll">roll</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-extensions">Extensions documentation</a><ul>
-<li><a class="reference internal" href="#users">users</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
